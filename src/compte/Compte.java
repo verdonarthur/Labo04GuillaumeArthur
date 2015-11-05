@@ -61,7 +61,7 @@ public class Compte {
          throw new IllegalArgumentException();
       
       noCompte = nbreComptes++;
-      nomTitulaire = this.nomTitulaire;
+      this.nomTitulaire = nomTitulaire;
       solde = dépôtInit;
       debMax = debMaxAut;
       decMax = decMaxAut;
