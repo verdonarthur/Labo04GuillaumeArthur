@@ -1,6 +1,11 @@
 package compte;
 
 public class Compte {
+   
+   private final int DEB_MAX = 1000;
+   private final int DEC_MAX = 800;
+   private final double SOLDE_NUL = 0.0;
+   
 
    private int noCompte;
 
@@ -21,9 +26,9 @@ public class Compte {
       
       noCompte = nbreComptes++;
       nomTitulaire = this.nomTitulaire;
-      solde = 0.0;
-      debMax = 1000;
-      decMax = 800;
+      solde = SOLDE_NUL;
+      debMax = DEB_MAX;
+      decMax = DEC_MAX;
    }
 
    public Compte(String nomTitulaire, double dépôtInit) {
@@ -34,8 +39,8 @@ public class Compte {
       noCompte = nbreComptes++;
       nomTitulaire = this.nomTitulaire;
       solde = dépôtInit;
-      debMax = 1000;
-      decMax = 800;
+      debMax = DEB_MAX;
+      decMax = DEC_MAX;
    }
 
    public Compte(String nomTitulaire, double dépôtInit, int decMaxAut) {
@@ -46,7 +51,7 @@ public class Compte {
       noCompte = nbreComptes++;
       nomTitulaire = this.nomTitulaire;
       solde = dépôtInit;
-      debMax = 1000;
+      debMax = DEB_MAX;
       decMax = decMaxAut;
    }
 
