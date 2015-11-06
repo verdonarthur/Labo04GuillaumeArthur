@@ -31,38 +31,38 @@ public class Compte {
       decMax = DEC_MAX;
    }
 
-   public Compte(String nomTitulaire, double dépôtInit) {
+   public Compte(String nomTitulaire, double dÃ©pÃ´tInit) {
       
-      if(nomTitulaire.isEmpty() || dépôtInit < 0)
+      if(nomTitulaire.isEmpty() || dÃ©pÃ´tInit < 0)
          throw new IllegalArgumentException();
       
       noCompte = nbreComptes++;
       nomTitulaire = this.nomTitulaire;
-      solde = dépôtInit;
+      solde = dÃ©pÃ´tInit;
       debMax = DEB_MAX;
       decMax = DEC_MAX;
    }
 
-   public Compte(String nomTitulaire, double dépôtInit, int decMaxAut) {
+   public Compte(String nomTitulaire, double dÃ©pÃ´tInit, int decMaxAut) {
       
-      if(nomTitulaire.isEmpty() || dépôtInit < 0 || decMaxAut < 0)
+      if(nomTitulaire.isEmpty() || dÃ©pÃ´tInit < 0 || decMaxAut < 0)
          throw new IllegalArgumentException();
       
       noCompte = nbreComptes++;
       nomTitulaire = this.nomTitulaire;
-      solde = dépôtInit;
+      solde = dÃ©pÃ´tInit;
       debMax = DEB_MAX;
       decMax = decMaxAut;
    }
 
-   public Compte(String nomTitulaire, double dépôtInit, int decMaxAut, int debMaxAut) {
+   public Compte(String nomTitulaire, double dÃ©pÃ´tInit, int decMaxAut, int debMaxAut) {
       
-      if(nomTitulaire.isEmpty() || dépôtInit < 0 || decMaxAut < 0 || debMaxAut < 0)
+      if(nomTitulaire.isEmpty() || dÃ©pÃ´tInit < 0 || decMaxAut < 0 || debMaxAut < 0)
          throw new IllegalArgumentException();
       
       noCompte = nbreComptes++;
       this.nomTitulaire = nomTitulaire;
-      solde = dépôtInit;
+      solde = dÃ©pÃ´tInit;
       debMax = debMaxAut;
       decMax = decMaxAut;
    }
@@ -91,7 +91,7 @@ public class Compte {
       return (solde < 0);
    }
 
-   public double debAutorisé() {
+   public double debAutorisÃ©() {
       /*
         
        
@@ -104,11 +104,11 @@ public class Compte {
       //return Math.min(Math.abs(a), b)
    }
 
-   public void créditer() {
-      // TODO implement here
+   public void crÃ©diter(double montCrÃ©dit) {
+      if(montCrÃ©dit <= 0){}
    }
 
-   public void débiter() {
+   public void dÃ©biter() {
       // TODO implement here
    }
 
