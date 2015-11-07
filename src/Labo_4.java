@@ -20,6 +20,10 @@ public class Labo_4 {
 
   public static void main(String[] args) {
      
-  }
+     Compte c1 = new Compte("J.DUPONT", 1000.0, 1000);
+     Compte c2 = new Compte("C.DURAND");
+     
+     
+   }
 
 }

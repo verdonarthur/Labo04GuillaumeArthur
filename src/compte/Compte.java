@@ -1,10 +1,27 @@
+/*
+-----------------------------------------------------------------------------------
+Laboratoire : 4
+Fichier     : Compte.java
+Auteur(s)   : Guillaume Serneels et Arthur Verdon
+Date        : 03.11.2015
+
+But         : Classe modélisant un compte bancaire
+
+Remarque(s) : Nous avons choisis d'implémenter le débit maximum autorisé ainsi le découvert
+              maximum autorisé sous la forme de variable entières étant donné qu'il semble inutile¨
+              d'y appliquer une précision au centime près.
+
+Compilateur : jdk1.8.0_60
+-----------------------------------------------------------------------------------
+*/
+
 package compte;
 
 public class Compte {
    
-   private final int DEB_MAX = 1000;
-   private final int DEC_MAX = 800;
-   private final double SOLDE_NUL = 0.0;
+   private final static int DEB_MAX = 1000;
+   private final static int DEC_MAX = 800;
+   private final static double SOLDE_NUL = 0.0;
    
 
    private int noCompte;
@@ -18,41 +35,20 @@ public class Compte {
    private int decMax;
 
    private static int nbreComptes = 1;
-
+   
    public Compte(String nomTitulaire) {
       
-      if(nomTitulaire.isEmpty())
-         throw new IllegalArgumentException();  
-      
-      noCompte = nbreComptes++;
-      nomTitulaire = this.nomTitulaire;
-      solde = SOLDE_NUL;
-      debMax = DEB_MAX;
-      decMax = DEC_MAX;
+      this(nomTitulaire, SOLDE_NUL, DEC_MAX, DEB_MAX);
    }
 
    public Compte(String nomTitulaire, double dépôtInit) {
       
-      if(nomTitulaire.isEmpty() || dépôtInit < 0)
-         throw new IllegalArgumentException();
-      
-      noCompte = nbreComptes++;
-      nomTitulaire = this.nomTitulaire;
-      solde = dépôtInit;
-      debMax = DEB_MAX;
-      decMax = DEC_MAX;
+      this(nomTitulaire, dépôtInit, DEC_MAX, DEB_MAX);
    }
 
    public Compte(String nomTitulaire, double dépôtInit, int decMaxAut) {
-      
-      if(nomTitulaire.isEmpty() || dépôtInit < 0 || decMaxAut < 0)
-         throw new IllegalArgumentException();
-      
-      noCompte = nbreComptes++;
-      nomTitulaire = this.nomTitulaire;
-      solde = dépôtInit;
-      debMax = DEB_MAX;
-      decMax = decMaxAut;
+            
+      this(nomTitulaire, dépôtInit, decMaxAut, DEB_MAX);
    }
 
    public Compte(String nomTitulaire, double dépôtInit, int decMaxAut, int debMaxAut) {
@@ -66,6 +62,7 @@ public class Compte {
       debMax = debMaxAut;
       decMax = decMaxAut;
    }
+
 
    public int getNoCompte() {
       return noCompte;
@@ -92,27 +89,43 @@ public class Compte {
    }
 
    public double debAutorisé() {
-      /*
-        
-       
-      if(estADecouvert())
-         return max(decMax + solde, debMax + solde - ;
+      
+      if(solde - debMax > -decMax)
+         return debMax;         
       else
-         
-      */
-      return 0.0;
-      //return Math.min(Math.abs(a), b)
+         return decMax + solde;
+   
    }
 
-   public void créditer(double montCrédit) {
-      if(montCrédit <= 0){}
+   public void créditer(double monCrédit) {
+      if(monCrédit <= 0)
+         throw new IllegalArgumentException();
+      solde += monCrédit;
    }
 
-   public void débiter() {
-      // TODO implement here
+   public boolean débiter(double monDébit) {
+      
+      if(monDébit <= 0)
+         throw new IllegalArgumentException();
+      
+      if(monDébit > this.debAutorisé()){
+         System.out.println("Impossible d'éffectuer le débit, le montant dépasse le débit maximal autorisé. \n");
+         return false;
+      }
+      else
+         solde -= monDébit;
+         return true;
    }
 
-   public void virement(Compte compteACrediter, double montant) {
-      // TODO implement here
+   public boolean virement(Compte compteACrediter, double montant) {
+      
+      if(montant <= 0)
+         throw new IllegalArgumentException();
+      
+      if(this.débiter(montant)){
+         this.créditer(montant);
+         return true;
+      }else
+         return false; 
    }
 }
