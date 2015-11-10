@@ -158,8 +158,8 @@ public class Compte {
    }
 
    /**
-    *
-    * @return si le le compte est à decouvert
+    * Permet de déterminer si un compte est à découvert
+    * @return si le compte est à decouvert
     */
    public boolean estADecouvert() {
       return (solde < 0);
@@ -189,7 +189,7 @@ public class Compte {
    /**
     * Debite un compte selon le montant choisi
     * @param monDébit le montant devant etre debiter
-    * @return vrai si le compte a bien ete debiter sinon retourne faux
+    * @return le montant qui a effectivement pu être débité
     * @throws IllegalArgumentException
 
     */
@@ -210,7 +210,6 @@ public class Compte {
     * Vire un montant d'argent du compte courant a un autre
     * @param compteACrediter le compte devant etre crediter
     * @param montant la valeur du montant à crediter
-    * @return vrai si le compte courant a bien pu etre debiter sinon retourne faux
     * @throws IllegalArgumentException
 
     */
