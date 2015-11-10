@@ -169,8 +169,7 @@ public class Compte {
     * methode calculant le montant maximum pouvant etre debite du compte
     * @return le montant max pouvant etre debite
     */
-   private double debAutorisé() {
-      
+   private double debAutorisé() {      
       if(solde - debMax > -decMax)
          return debMax;         
       else
@@ -180,24 +179,22 @@ public class Compte {
    /**
     * methode creditant le compte du montant passe en parametre
     * @param monCrédit montant a crediter
+    * @throws IllegalArgumentException
     */
-   public void créditer(double monCrédit) {
+   public void créditer(double monCrédit) throws IllegalArgumentException {
       this.verfifArg(monCrédit);      
       solde += monCrédit;
    }
 
-
    /**
-    * debite un compte selon le montant choisi
+    * Debite un compte selon le montant choisi
     * @param monDébit le montant devant etre debiter
     * @return vrai si le compte a bien ete debiter sinon retourne faux
-    */
-   public double débiter(double monDébit) {
-      
-      if(monDébit <= 0)
-         throw new IllegalArgumentException();
+    * @throws IllegalArgumentException
 
-      
+    */
+   public double débiter(double monDébit) throws IllegalArgumentException {
+          
       this.verfifArg(monDébit);     
       if(monDébit > this.debAutorisé()){
          solde -= this.debAutorisé();
@@ -214,13 +211,18 @@ public class Compte {
     * @param compteACrediter le compte devant etre crediter
     * @param montant la valeur du montant à crediter
     * @return vrai si le compte courant a bien pu etre debiter sinon retourne faux
+    * @throws IllegalArgumentException
+
     */
-   public void virement(Compte compteACrediter, double montant) {
+   public void virement(Compte compteACrediter, double montant) throws IllegalArgumentException{
       this.verfifArg(montant);      
       montant = this.débiter(montant);
       compteACrediter.créditer(montant);
    }
    
+   /**
+    * Permet d'afficher un compte
+    */
    public void affiche(){
       System.out.println("Compte no : " + noCompte + "\nNom du titulaire : " + nomTitulaire);
       System.out.println("Découvert maximum autorisé : " + decMax + "\nDébit maximum autorisé : " + debMax);
@@ -229,7 +231,12 @@ public class Compte {
          System.out.println("Le compte est à découvert \n\n");
    }
    
-   private void verfifArg(double montant){
+   /**
+    * Vérifie si un montant est supèrieur ou égal à zèro
+    * @param montant le montant à vérifier
+    * @throws IllegalArgumentException
+    */
+   private void verfifArg(double montant) throws IllegalArgumentException{
       if(montant <= 0)
         throw new IllegalArgumentException();
    }
