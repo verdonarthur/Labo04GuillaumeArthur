@@ -53,7 +53,7 @@ public class Compte {
 
    public Compte(String nomTitulaire, double dépôtInit, int decMaxAut, int debMaxAut) {
       
-      if(nomTitulaire.isEmpty() || dépôtInit < 0 || decMaxAut < 0 || debMaxAut < 0)
+      if(nomTitulaire.isEmpty() || dépôtInit < 0 || decMaxAut < 0 || debMaxAut < 0) //Vérification des paramètre
          throw new IllegalArgumentException();
       
       noCompte = nbreComptes++;
@@ -69,7 +69,7 @@ public class Compte {
    }
 
    public String getNomTitulaire() {
-      return "nomTitulaire";
+      return nomTitulaire;
    }
 
    public double getSolde() {
@@ -88,44 +88,48 @@ public class Compte {
       return (solde < 0);
    }
 
-   public double debAutorisé() {
-      
-      if(solde - debMax > -decMax)
+   private double debAutorisé() { 
+      if(solde - debMax >= -decMax)
          return debMax;         
       else
-         return decMax + solde;
-   
+         return decMax + solde;  
    }
 
    public void créditer(double monCrédit) {
-      if(monCrédit <= 0)
-         throw new IllegalArgumentException();
+      this.verfifArg(monCrédit);      
       solde += monCrédit;
    }
 
-   public boolean débiter(double monDébit) {
+   public double débiter(double monDébit) {
       
-      if(monDébit <= 0)
-         throw new IllegalArgumentException();
-      
+      this.verfifArg(monDébit);     
       if(monDébit > this.debAutorisé()){
-         System.out.println("Impossible d'éffectuer le débit, le montant dépasse le débit maximal autorisé. \n");
-         return false;
+         solde -= this.debAutorisé();
+         return this.debAutorisé();
       }
       else
          solde -= monDébit;
-         return true;
+         return monDébit;         
    }
 
-   public boolean virement(Compte compteACrediter, double montant) {
+   public void virement(Compte compteACrediter, double montant) {
       
-      if(montant <= 0)
-         throw new IllegalArgumentException();
-      
-      if(this.débiter(montant)){
-         this.créditer(montant);
-         return true;
-      }else
-         return false; 
+      this.verfifArg(montant);      
+      montant = this.débiter(montant);
+      compteACrediter.créditer(montant);
    }
+   
+   public void affiche(){
+      System.out.println("Compte no : " + noCompte + "\nNom du titulaire : " + nomTitulaire);
+      System.out.println("Découvert maximum autorisé : " + decMax + "\nDébit maximum autorisé : " + debMax);
+      System.out.println("Solde du compte : " + solde + "\n");
+      if(this.estADecouvert())
+         System.out.println("Le compte est à découvert \n\n");
+   }
+   
+   private void verfifArg(double montant){
+      if(montant <= 0)
+        throw new IllegalArgumentException();
+   }
+   
 }
