@@ -142,6 +142,22 @@ public class Compte {
    }
 
    /**
+    * change le debit max authorise
+    * @param debMax nouveau debit max
+    */
+   public void setDebMax(int debMax) {
+      this.debMax = debMax;
+   }
+
+   /**
+    * change le decouvert max authorise
+    * @param decMax nouveau decouvert max
+    */
+   public void setDecMax(int decMax) {
+      this.decMax = decMax;
+   }
+
+   /**
     *
     * @return si le le compte est à decouvert
     */
