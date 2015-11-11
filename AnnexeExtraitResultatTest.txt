@@ -1,0 +1,162 @@
+Compte no : 1
+Nom du titulaire : J.DUPONT
+Découvert maximum autorisé : 1000
+Débit maximum autorisé : 1000
+Solde du compte : 1000.0
+
+Compte no : 2
+Nom du titulaire : C.DURAND
+Découvert maximum autorisé : 800
+Débit maximum autorisé : 1000
+Solde du compte : 0.0
+
+Débite c1 de 500,- 
+
+Compte no : 1
+Nom du titulaire : J.DUPONT
+Découvert maximum autorisé : 1000
+Débit maximum autorisé : 1000
+Solde du compte : 500.0
+
+Crédite c1 de 500,- 
+
+Compte no : 1
+Nom du titulaire : J.DUPONT
+Découvert maximum autorisé : 1000
+Débit maximum autorisé : 1000
+Solde du compte : 1000.0
+
+Débite c1 de 5000,- 
+
+Compte no : 1
+Nom du titulaire : J.DUPONT
+Découvert maximum autorisé : 1000
+Débit maximum autorisé : 1000
+Solde du compte : 0.0
+
+Débite c1 de 5000,- 
+
+Compte no : 1
+Nom du titulaire : J.DUPONT
+Découvert maximum autorisé : 1000
+Débit maximum autorisé : 1000
+Solde du compte : -1000.0
+
+Le compte est à découvert 
+
+
+Débite c1 de 5000,- 
+
+Compte no : 1
+Nom du titulaire : J.DUPONT
+Découvert maximum autorisé : 1000
+Débit maximum autorisé : 1000
+Solde du compte : -1000.0
+
+Le compte est à découvert 
+
+
+Crédite c1 de 500,- 
+
+Compte no : 1
+Nom du titulaire : J.DUPONT
+Découvert maximum autorisé : 1000
+Débit maximum autorisé : 1000
+Solde du compte : -500.0
+
+Le compte est à découvert 
+
+
+Avant Virement 
+
+Compte no : 1
+Nom du titulaire : J.DUPONT
+Découvert maximum autorisé : 1000
+Débit maximum autorisé : 1000
+Solde du compte : -500.0
+
+Le compte est à découvert 
+
+
+Compte no : 2
+Nom du titulaire : C.DURAND
+Découvert maximum autorisé : 800
+Débit maximum autorisé : 1000
+Solde du compte : 0.0
+
+Virement de c1 à c2 , montant: 500,- 
+
+Compte no : 1
+Nom du titulaire : J.DUPONT
+Découvert maximum autorisé : 1000
+Débit maximum autorisé : 1000
+Solde du compte : -1000.0
+
+Le compte est à découvert 
+
+
+Compte no : 2
+Nom du titulaire : C.DURAND
+Découvert maximum autorisé : 800
+Débit maximum autorisé : 1000
+Solde du compte : 500.0
+
+TESTS CRITIQUES SUR COMPTE
+
+Test decouvert négatif
+java.lang.IllegalArgumentException
+Compte no : 3
+Nom du titulaire : Mr. Test
+Découvert maximum autorisé : 800
+Débit maximum autorisé : 1000
+Solde du compte : 0.0
+
+Test créditer négativement
+java.lang.IllegalArgumentException
+Compte no : 3
+Nom du titulaire : Mr. Test
+Découvert maximum autorisé : 800
+Débit maximum autorisé : 1000
+Solde du compte : 0.0
+
+Test créditer avec une grande valeur
+Compte no : 3
+Nom du titulaire : Mr. Test
+Découvert maximum autorisé : 800
+Débit maximum autorisé : 1000
+Solde du compte : 9.999999999999E12
+
+Test débiter négativement
+java.lang.IllegalArgumentException
+Compte no : 3
+Nom du titulaire : Mr. Test
+Découvert maximum autorisé : 800
+Débit maximum autorisé : 1000
+Solde du compte : 9.999999999999E12
+
+Test virement négativement
+java.lang.IllegalArgumentException
+Compte no : 3
+Nom du titulaire : Mr. Test
+Découvert maximum autorisé : 800
+Débit maximum autorisé : 1000
+Solde du compte : 9.999999999999E12
+
+Compte no : 4
+Nom du titulaire : Mr. Test Virement
+Découvert maximum autorisé : 800
+Débit maximum autorisé : 1000
+Solde du compte : 0.0
+
+Test gros virement
+Compte no : 3
+Nom du titulaire : Mr. Test
+Découvert maximum autorisé : 800
+Débit maximum autorisé : 1000
+Solde du compte : 9.999999998999E12
+
+Compte no : 4
+Nom du titulaire : Mr. Test Virement
+Découvert maximum autorisé : 800
+Débit maximum autorisé : 1000
+Solde du compte : 1000.0
