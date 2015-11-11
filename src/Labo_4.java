@@ -14,8 +14,17 @@ Compilateur : jdk1.8.0_60
 -----------------------------------------------------------------------------------
 */
 
+/**
+ * @author Guillaume Serneels
+ * @auhtor Arthur Verdon
+ * @version 1.0
+ */
+
 import compte.*;
 
+/**
+ * Classe executant le programme principale
+ */
 public class Labo_4 {
 
   public static void main(String[] args) {
