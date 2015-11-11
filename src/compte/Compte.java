@@ -223,11 +223,15 @@ public class Compte {
     * Permet d'afficher un compte
     */
    public void affiche(){
-      System.out.println("Compte no : " + noCompte + "\nNom du titulaire : " + nomTitulaire);
-      System.out.println("Découvert maximum autorisé : " + decMax + "\nDébit maximum autorisé : " + debMax);
-      System.out.println("Solde du compte : " + solde + "\n");
+      System.out.println(this.toString()); 
+   }
+   
+   public String toString(){
+      String s = "Compte no : " + noCompte + "\nNom du titulaire : " + nomTitulaire + "\nDécouvert maximum autorisé : "
+                + decMax + "\nDébit maximum autorisé : " + debMax + "\nSolde du compte : " + solde + "\n";
       if(this.estADecouvert())
-         System.out.println("Le compte est à découvert \n\n");
+         s += "\nLe compte est à découvert \n\n";
+      return s;    
    }
    
    /**
